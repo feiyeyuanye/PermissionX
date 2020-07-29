@@ -34,3 +34,30 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies{
+        classpath 'com.novoda:bintray-release:0.9.1'
+    }
+}
+
+publish {
+    // 添加 Bintray 的用户名即可
+    userOrg = 'feiyeyuanye'
+    // 用于作为组织的唯一标识，通常填入公司的倒排域名，这里使用了项目的包名。
+    groupId = 'com.permissionx.jhrdev'
+    // 用于作为工程的唯一标识，这部分直接填入 permissionx 即可，另外要保证同一个 groupId 下不会存在两个相同的 artifactId。
+    artifactId = 'permissionx'
+    // 表示当前开源库的版本号
+    publishVersion = '1.0.0'
+    // 用于对开源库进行一些简单的描述
+    desc = 'Make Android runtime permission request easy'
+    // 填入 PermissionX 的版本库主页地址即可
+    website = 'https://github.com/feiyeyuanye/PermissionX'
+}
